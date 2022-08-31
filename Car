@@ -1,34 +1,37 @@
 public class Car{
    private double fuelCapacity;
-   private double fuelEfficency;
+   private double fuelEfficiency;
    private double fuelLevel;
    private double totalDistance;
    
    
    
-   public Car(double fuelCapacity, double fuelEfficency){
-      this(fuelCapacity, fuelEfficency, 0);
-      totalDistance = 0;
-      }
+   public Car(double fuelCapacity, double fuelEfficiency){
+      this(fuelCapacity, fuelEfficiency, 0);
+            }
           
-   public Car(double fuelCapacity, double fuelEffiency, double fuelLevel){
+   public Car(double fuelCapacity, double fuelEfficiency, double fuelLevel){
        this.fuelCapacity = fuelCapacity;
-       this.fuelEfficency = fuelEfficency;
+       this.fuelEfficiency = fuelEfficiency;
        this.fuelLevel = fuelLevel;
        this.totalDistance = 0;
       }
       
       
    public void drive(double time, double rate){
-      double t = time;
-      double r = rate; 
-      totalDistance = t * r; 
-      double a = totalDistance / fuelEfficency;
-      fuelLevel = fuelLevel - a; 
-            
+      double tripDistance = time * rate;
      
-      
-      }
+      if(fuelLevel > 0.0){
+         if(fuelEfficiency * fuelLevel > tripDistance){
+            totalDistance += tripDistance;
+            double a = totalDistance / fuelEfficiency;
+            fuelLevel = fuelLevel - a; 
+         } else {
+            totalDistance += fuelEfficiency * fuelLevel;
+            fuelLevel = 0.0;
+         }            
+      }         
+   }
          
    public void fillUp(double amount){
       double amountLeft = fuelCapacity - fuelLevel;
@@ -50,14 +53,14 @@ public class Car{
       return totalDistance;
       }
     public double getFuelEfficency(){
-      return fuelEfficency;
+      return fuelEfficiency;
       }
       
     public String toString(){
       String str = "\nfuelLevel=" + fuelLevel;
       str += "\ntotalDistance=" + totalDistance;
       str += "\nfuelCapacity=" + fuelCapacity;
-      str += "\nfuelEffiency=" + fuelEfficency;
+      str += "\nfuelEffiency=" + fuelEfficiency;
       return str;
       }
 
@@ -165,4 +168,3 @@ public class Car{
 	}*/
 	
 }
-
