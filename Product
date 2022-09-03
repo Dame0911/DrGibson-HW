@@ -1,0 +1,44 @@
+public class Product{
+   private int batch;
+   private String code;
+   private String date;
+   private int indexDateBegins;
+   private String plant;
+   
+   
+   public Product(String code){
+   
+   
+    }
+    
+   private String extractPlant(){
+      String exPlant;
+      if(code.isLetter(code.charAt(2)){
+         exPlant = code.substring(0,2);
+      }else{
+         exPlant = code.substring(0,1);
+      }
+      return expPlant;
+   }
+      
+    
+   private String extractDate(){
+      String exDate;
+      
+      if(code.isLetter(code.charAt(2)){
+         exDate = code.substring(3,10);
+      } else{
+         exDate = code.substring(2,9);
+      }return exDate;
+   }
+   
+   private int extractBatch(){
+      int exBatch = 0;
+      
+      if(code.isLetter(code.charAt(9)){
+         exBatch = Integer.parseInt(code.substring(10));
+      } else{
+         exBatch = Integer.parseInt(code.substring(11));
+      }
+      return exBatch;
+   }
