@@ -56,9 +56,15 @@ public class Product{
     
     public int extractBatch(String code){
        int exBatch = 0;
-       
-       exBatch = Integer.parseInt(code.substring(11));
-       return exBatch;
+       if(Character.isLetter(code.charAt(2))){ 
+          exBatch = Integer.parseInt(code.substring(11));
+          return exBatch;
+       }
+       else{
+          exBatch = Integer.parseInt(code.substring(10));
+          return exBatch;
+       }
+         
     }
     
     
