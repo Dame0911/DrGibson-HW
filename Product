@@ -7,38 +7,78 @@ public class Product{
    
    
    public Product(String code){
+   this.code = code;
+   this.batch = extractBatch(code);
+   this.date = extractDate(code);
+   this.plant = extractPlant(code);
    
    
     }
     
-   private String extractPlant(){
-      String exPlant;
-      if(code.isLetter(code.charAt(2)){
-         exPlant = code.substring(0,2);
-      }else{
-         exPlant = code.substring(0,1);
-      }
-      return expPlant;
-   }
-      
+    public String getCode(){
+      return code;
+    }
+    public int getBatch(){
+      return batch;
+    }
+    public String getDate(){
+      return date;
+    }
+    public String getPlant(){
+      return plant;
+    }
     
-   private String extractDate(){
-      String exDate;
-      
-      if(code.isLetter(code.charAt(2)){
-         exDate = code.substring(3,10);
-      } else{
-         exDate = code.substring(2,9);
-      }return exDate;
-   }
-   
-   private int extractBatch(){
-      int exBatch = 0;
-      
-      if(code.isLetter(code.charAt(9)){
-         exBatch = Integer.parseInt(code.substring(10));
-      } else{
-         exBatch = Integer.parseInt(code.substring(11));
+    
+    
+    
+    
+   public String extractPlant(String code){
+        String exPlant;
+       if(Character.isLetter(code.charAt(2))){
+          exPlant = code.substring(0,3);
+          return exPlant;
+       }else{
+          exPlant = code.substring(0,2);
+          return exPlant;
       }
-      return exBatch;
+    }
+
+   public String extractDate(String code){
+       String exDate;
+       
+       if(Character.isLetter(code.charAt(2))){
+          exDate = code.substring(3,11);
+       } 
+       else{
+          exDate = code.substring(2,10);
+       }return exDate;
+    }
+    
+    public int extractBatch(String code){
+       int exBatch = 0;
+       
+       exBatch = Integer.parseInt(code.substring(11));
+       return exBatch;
+    }
+    
+    
+    public String toString(){
+         String msg = "Code=" + getCode() + ", plant=" + getPlant() + ", Date=" + getDate() + ", Batch=" + getBatch(); 
+         return msg;
+    }
+         
+//       
+//    
+//    
+   
+   
+   public static void main(String[]args){
+      Product p = new Product("VLD040419367");
+      System.out.print(p);
+      
+      
    }
+
+
+}
+
