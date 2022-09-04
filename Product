@@ -14,7 +14,7 @@ public class Product{
    
    
     }
-    
+    //Get Methods
     public String getCode(){
       return code;
     }
@@ -31,8 +31,8 @@ public class Product{
     
     
     
-    
-   public String extractPlant(String code){
+   // Helper Methods
+   private String extractPlant(String code){
         String exPlant;
        if(Character.isLetter(code.charAt(2))){
           exPlant = code.substring(0,3);
@@ -43,7 +43,7 @@ public class Product{
       }
     }
 
-   public String extractDate(String code){
+   private String extractDate(String code){
        String exDate;
        
        if(Character.isLetter(code.charAt(2))){
@@ -54,7 +54,7 @@ public class Product{
        }return exDate;
     }
     
-    public int extractBatch(String code){
+    private int extractBatch(String code){
        int exBatch = 0;
        if(Character.isLetter(code.charAt(2))){ 
           exBatch = Integer.parseInt(code.substring(11));
@@ -67,6 +67,14 @@ public class Product{
          
     }
     
+   public boolean isAfter2000(){
+      boolean isAfter = false;
+      int year = Integer.parseInt(date.substring(4));
+      if(year >= 2000){
+         isAfter = true;
+      }
+      return isAfter;
+   }
     
     public String toString(){
          String msg = "Code=" + getCode() + ", plant=" + getPlant() + ", Date=" + getDate() + ", Batch=" + getBatch(); 
@@ -82,7 +90,7 @@ public class Product{
       Product p = new Product("VLD040419367");
       System.out.print(p);
       
-      
+            
    }
 
 
