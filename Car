@@ -24,7 +24,7 @@ public class Car{
       if(fuelLevel > 0.0){
          if(fuelEfficiency * fuelLevel > tripDistance){
             totalDistance += tripDistance;
-            double a = totalDistance / fuelEfficiency;
+            double a = tripDistance / fuelEfficiency;
             fuelLevel = fuelLevel - a; 
          } else {
             totalDistance += fuelEfficiency * fuelLevel;
@@ -66,16 +66,16 @@ public class Car{
 
 
 	public static void main(String[] args) {
-	/*	testConstructorWith3Parameters();
+		testConstructorWith3Parameters();
 		testConstructorWith2Parameters();
 		testFillUp_AmountLessThanRemainingCapacity();
 		testFillUp_AmountEqualToRemainingCapacity();
 		testFillUp_AmountMoreThanRemainingCapacity();  
-  */  testDrive_OneDrive_EnoughFuel();/*
+      testDrive_OneDrive_EnoughFuel();
 		testDrive_TwoDrives_EnoughFuel();
 		testDrive_OneDrive_NotEnoughFuel();
 		testDrive_DriveFillUpDrive_EnoughFuel();
-		testDrive_DriveFillUpDrive_EnoughFuel();*/
+		testDrive_DriveFillUpDrive_EnoughFuel();
 	}
 	
 	public static void testConstructorWith3Parameters() {
@@ -129,7 +129,7 @@ public class Car{
 				c.getFuelLevel(), c.getTotalDistance());
 		System.out.println(msgExpected);
 		System.out.println(msgActual);
-	}/*
+	}
 
 	public static void testDrive_TwoDrives_EnoughFuel() {
 		System.out.println("\n-->testDrive_TwoDrives_EnoughFuel()");
@@ -165,6 +165,6 @@ public class Car{
 				c.getFuelLevel(), c.getTotalDistance());
 		System.out.println(msgExpected);
 		System.out.println(msgActual);
-	}*/
+	}
 	
 }
