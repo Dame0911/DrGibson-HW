@@ -1,0 +1,52 @@
+package hw3_code;
+
+public class WareHouse {
+	private Item[]items = new Item[10];
+	private int numItems;
+	
+	public WareHouse() {	
+	}
+	
+	public void addItem(Item v) {
+		int size = items.length;
+		if(numItems < size) {
+			items[numItems] = v;
+			numItems += 1;
+		}
+	}
+	public Item getItem(int p) {
+		if(p < numItems) {
+			Item gotItem = items[p];
+			return gotItem;	
+		}
+		else {
+			return null;
+		}
+		
+	}
+	public Item getItem(String a) {
+		Item v = null;
+		for(int i = 0; i < items.length; i++) {
+			if(items[i].getName().equals(a)) {
+				v = items[i];
+			}
+		}
+		return v;
+	}
+	public int getNumItems() {
+		return numItems;
+	}
+	public double getAverageTemp() {
+		for(int i = 0; i < items.length; i++) {
+			
+		}
+		
+	}
+	
+	
+	
+
+
+	
+	
+}
