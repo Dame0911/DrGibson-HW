@@ -38,20 +38,33 @@ public class WareHouse {
 	}
 	public double getAverageTemp() {
 		double tempSum = 0;
-		double avgTemp = 0;
-		double count = 0;
+		int count = 0;
 		for(int i = 0; i < items.length; i++){
 			if(items[i] instanceof RefrigeratedItem) {
 				RefrigeratedItem x = (RefrigeratedItem)items[i];
 				tempSum += x.getTemp();		
 				count += 1;
 			}
-			
-			}
+	
+		}
 		return tempSum / count;
 			
 		}
-
+	public RefrigeratedItem[] getRefrigeratedArray(Item[] imps){
+		RefrigeratedItem[] refArry = new RefrigeratedItem[imps.length];
+		int size = 0;
+		for(int i = 0; i < imps.length; i++){
+			if(imps[i] instanceof RefrigeratedItem){
+				RefrigeratedItem x = (RefrigeratedItem)imps[i];
+				refArry[size] = x;
+				size += 1;
+			}	
+		}
+		return refArry;	
+		
+	}
+       
+	
 	}
 	
 	
