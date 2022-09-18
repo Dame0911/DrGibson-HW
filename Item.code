@@ -1,1 +1,12 @@
+package hw3_code;
 
+public class Item {
+	private Item[]items;
+	private int numItems;
+	private double weight;
+	public String name;
+	
+	public Item(String name, double weight) {
+		this.name = name;
+		this.weight = weight;
+	}
