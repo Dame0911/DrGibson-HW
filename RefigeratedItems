@@ -1,0 +1,26 @@
+package hw3_code;
+
+public class RefrigeratedItem extends Item{
+	private double temp;
+	
+	public RefrigeratedItem(String name, double weight, double temp) {
+		super(name,weight);
+		this.temp = temp;
+	}
+	public double getTemp() {
+		return temp;
+	}
+	@Override
+	public double cost() {
+		double v = (weight *2) + ((100 - temp) * 0.1);
+		return v;
+	}
+	public String toString() {
+//		String msg = String.format("name=Ice Cream, cost=$10.00, weight=1.00, temp=20.00 degrees")
+	    String msg = String.format("name=%s, cost=$%.2f, weight=%.2f, temp=%.2f degrees",getName(),cost(),getWeight(),getTemp());
+		return msg;
+	}
+	
+	
+
+}
