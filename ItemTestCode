@@ -1,0 +1,47 @@
+package hw3_code;
+
+public class ItemTest {
+	
+	public static void main(String[] args) {
+		testConstructor();
+		testItemCost();
+		testToString();
+	}
+	
+	/**
+	 * Verify that the name & weight are initialized with the constructor.
+	 */
+	public static void testConstructor() {
+		System.out.println("-->testConstructor"); 
+		Item v = new Item("Cheese",3.05);
+		System.out.println("Expected Output: Name= Cheese, Weight= 3.05" );
+		System.out.println("Actual Output: Name= "+ v.getName() + ", Weight= " + v.getWeight()); 
+	}
+
+	/**
+	 * Verify that the cost method works correctly.
+	 */
+	public static void testItemCost() {
+		System.out.println("-->testItemCost"); 
+		Item v = new Item("Cheese",3.05);
+		System.out.println("Expected Output: Cost = $6.10" );
+		String actual = String.format("Actual Output: Cost = $%.2f", v.cost());
+		System.out.println(actual);
+	}
+
+	/**
+	 * Verify that the toString method produces a string exactly
+	 * as specified in the assignment document. 
+	 */
+	public static void testToString() {
+		System.out.println("-->testToString"); 
+		Item v = new Item("Cheese",3.05);
+		System.out.println("Expected Output: name=Cheese, cost=$6.10, weight=3.05 ");
+		System.out.print("Actual Output: ");
+		System.out.print(v);
+	}
+
+}
+
+
+
