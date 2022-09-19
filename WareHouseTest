@@ -196,7 +196,6 @@ public class WareHouseTest {
 		 */
 		public static void testRemoveItem_WithName() {
 			System.out.println("-->testRemoveItem_WithName"); 
-			System.out.println("NOT IMPLEMENTED"); 
 			WareHouse w = new WareHouse();
 			Item a = new Item("Granola Bar",2.0);
 			Item b = new Item("Bread",4.3);
@@ -235,9 +234,7 @@ public class WareHouseTest {
 			w.addItem(d);
 			w.addItem(e);
 			System.out.print(w);
-		
-			System.out.println("NOT IMPLEMENTED"); 
-		}
+				}
 
 	}
 
