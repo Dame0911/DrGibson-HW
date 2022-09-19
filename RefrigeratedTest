@@ -1,0 +1,65 @@
+package hw3_code;
+
+public class RefigeratedItemTest {
+
+		public static void main(String[] args) {
+			testConstructorMain();
+			testConstructorAcceptsItem();
+			testItemCost();
+			testToString();
+		}
+		
+		/**
+		 * Verify that the name, weight, & temp are initialized with the main constructor.
+		 */
+		public static void testConstructorMain() {
+			System.out.println("-->testConstructorMain"); 
+			Item d = new RefrigeratedItem("Ice Cream", 1.00,20.00);
+			String actual = String.format("Item:%s, Weight:%.2f",d.getName(),d.getWeight());
+			System.out.println("Expected Output: Item:Ice Cream, Weight:1.00");
+			System.out.println("Actual Output: " + actual); 
+			
+			
+		}
+
+		/**
+		 * Verify that the name, weight, & temp are initialized with the second constructor.
+		 */
+		public static void testConstructorAcceptsItem() {
+			System.out.println("-->testConstructorAcceptsItem"); 
+			RefrigeratedItem d = new RefrigeratedItem("Ice Cream", 1.00, 20.00);
+			String actual = String.format("Item:%s, Weight:%.2f, Temperature:%.2f degrees",d.getName(),d.getWeight(),d.getTemp());
+			System.out.println("Expected Output: Item:Ice Cream, Weight:1.00, Temperature:20.00 degrees");
+			System.out.println("Actual Output: " + actual); 
+		}
+
+		/**
+		 * Verify that the cost method works correctly.
+		 */
+		public static void testItemCost() {
+			System.out.println("-->testItemCost"); 
+			RefrigeratedItem d = new RefrigeratedItem("Ice Cream", 1.00, 20.00);
+			System.out.println("Expected Output: Item Cost: $10.00"); 
+			String actual = String.format("Actual Output: Item Cost: $%.2f", d.cost());
+			System.out.println(actual); 
+
+			
+		}
+
+		/**
+		 * Verify that the toString method produces a string exactly
+		 * as specified in the assignment document. 
+		 */
+		public static void testToString() {
+			System.out.println("-->testToString");
+			RefrigeratedItem d = new RefrigeratedItem("Ice Cream", 1.00, 20.00);
+			System.out.println("Expected Output: name=Ice Cream, cost=$10.00, weight=1.00, temp=20.00 degrees"); 
+			System.out.print("Actual Output: " + d);
+		}
+
+	}
+
+
+	
+	
+
