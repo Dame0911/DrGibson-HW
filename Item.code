@@ -1,12 +1,30 @@
-package hw3_code;
+package hw3;
 
 public class Item {
-	private Item[]items;
-	private int numItems;
-	private double weight;
-	public String name;
+	protected double weight;
+	protected String name;
 	
 	public Item(String name, double weight) {
 		this.name = name;
 		this.weight = weight;
 	}
+	
+	public double getWeight() {
+		double g = weight;
+		return g;
+		
+	}
+	
+	public String getName() {
+		String n = name;
+		return n;
+	}
+	public double cost() {
+		double a = getWeight() * 2;
+		return a;
+	}
+	
+	
+
+
+}
