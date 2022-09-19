@@ -3,17 +3,17 @@ package hw3_code;
 public class WareHouseTest {
 
 		public static void main(String[] args) {
-			testAddItem();
-			testAddItem_Multiple();
-			testGetItem_WithIndex();
-//			testGetItem_WithName();
+//			testAddItem();
+//			testAddItem_Multiple();
+//			testGetItem_WithIndex();
+//    		testGetItem_WithName();
 //			testGetAverageTemp();
 //			testGetRefrigeratedItems();
 //			testGetTotalCost();
 //			testGetTotalCostRefrigerated();
 //			testRemoveItem_WithIndex();
 //			testRemoveItem_WithName();
-//			testToString();
+			testToString();
 		}
 		
 		/**
@@ -24,8 +24,8 @@ public class WareHouseTest {
 			WareHouse w = new WareHouse();
 			Item v = new Item("Granola Bar",2.0);
 			w.addItem(v);
-			System.out.println("Expected Output: Number of items: 1"); 
-			System.out.println("Actual Output: Number of items: " + w.getNumItems());
+			System.out.println("Expected: Number of items: 1"); 
+			System.out.println("Actual: Number of items: " + w.getNumItems());
 			
 		}
 		
@@ -41,8 +41,8 @@ public class WareHouseTest {
 			w.addItem(a);
 			w.addItem(b);
 			w.addItem(c);
-		   System.out.println("Expected Output, Number of Items: 3"); 
-		   System.out.println("Actual Output, Number of Items: " + w.getNumItems()); 
+		   System.out.println("Expected: Number of Items: 3"); 
+		   System.out.println("Actual:, Number of Items: " + w.getNumItems()); 
 
 		}
 		
@@ -59,8 +59,8 @@ public class WareHouseTest {
 			w.addItem(b);
 			w.addItem(c);
 			
-			System.out.println("Expected Output, Item at index 1: Bread"); 
-			System.out.println("Actual Output, Item at index 1: " + w.getItem(1).getName());
+			System.out.println("Expected: Item at index 1: Bread"); 
+			System.out.println("Actual: Item at index 1: " + w.getItem(1).getName());
 		}
 
 		/**
@@ -75,8 +75,8 @@ public class WareHouseTest {
 			w.addItem(a);
 			w.addItem(b);
 			w.addItem(c);
-			System.out.print("Expected Out[);
-			System.out.println("NOT IMPLEMENTED"); 
+			System.out.println("Expected: Match=Bread");
+			System.out.println("Actual: Match="+ w.getItem("Bread")); 
 		}
 
 		/**
@@ -84,10 +84,20 @@ public class WareHouseTest {
 		 */
 		public static void testGetAverageTemp() {
 			System.out.println("-->testGetAverageTemp"); 
-			
-			
-			
-			System.out.println("NOT IMPLEMENTED"); 
+			WareHouse w = new WareHouse();
+			Item a = new Item("Granola Bar",2.0);
+			Item b = new Item("Bread",4.3);
+			Item c = new RefrigeratedItem("Waffles",5.4,20.00);
+			Item d = new RefrigeratedItem("Ice Cream", 2.7, 26.00);
+			Item e = new RefrigeratedItem("Pizza",5.2,20.00);
+			w.addItem(a);
+			w.addItem(b);
+			w.addItem(c);
+			w.addItem(d);
+			w.addItem(e);
+			System.out.println("Expected: Avg = 22.00");
+			String actual = String.format("Actual: Avg = %.2f", w.getAverageTemp()); 
+			System.out.println(actual);	
 		}
 		
 		/**
@@ -95,15 +105,42 @@ public class WareHouseTest {
 		 */
 		public static void testGetRefrigeratedItems() {
 			System.out.println("-->testGetRefrigeratedItems"); 
-			System.out.println("NOT IMPLEMENTED"); 
+			WareHouse w = new WareHouse();
+			Item a = new Item("Granola Bar",2.0);
+			Item b = new Item("Bread",4.3);
+			Item c = new RefrigeratedItem("Waffles",5.4,20.00);
+			Item d = new RefrigeratedItem("Ice Cream", 2.7, 26.00);
+			Item e = new RefrigeratedItem("Pizza",5.2,20.00);
+			w.addItem(a);
+			w.addItem(b);
+			w.addItem(c);
+			w.addItem(d);
+			w.addItem(e);
+			RefrigeratedItem[] rF = w.getRefrigeratedArray(w.items);
+			System.out.println("Expected: Refrigerated items = 3" );
+			System.out.println("Actual: Refrigerated items = " + rF.length);
+			 
 		}
 		
 		/**
 		 * Add 5 items, 3 of which are refrigerated. Verify the total cost.
 		 */
 		public static void testGetTotalCost() {
-			System.out.println("-->testGetTotalCostRefrigerated"); 
-			System.out.println("NOT IMPLEMENTED"); 
+			System.out.println("-->testGetTotalCost"); 
+			WareHouse w = new WareHouse();
+			Item a = new Item("Granola Bar",2.0);
+			Item b = new Item("Bread",4.3);
+			Item c = new RefrigeratedItem("Waffles",5.4,20.00);
+			Item d = new RefrigeratedItem("Ice Cream", 2.7, 26.00);
+			Item e = new RefrigeratedItem("Pizza",5.2,20.00);
+			w.addItem(a);
+			w.addItem(b);
+			w.addItem(c);
+			w.addItem(d);
+			w.addItem(e);
+			System.out.println("Expected: 62.6");
+			System.out.println("Actual:" + w.totalCost());
+			 
 		}
 
 		/**
@@ -111,7 +148,20 @@ public class WareHouseTest {
 		 */
 		public static void testGetTotalCostRefrigerated() {
 			System.out.println("-->testGetTotalCostRefrigerated"); 
-			System.out.println("NOT IMPLEMENTED"); 
+			WareHouse w = new WareHouse();
+			Item a = new Item("Granola Bar",2.0);
+			Item b = new Item("Bread",4.3);
+			Item c = new RefrigeratedItem("Waffles",5.4,20.00);
+			Item d = new RefrigeratedItem("Ice Cream", 2.7, 26.00);
+			Item e = new RefrigeratedItem("Pizza",5.2,20.00);
+			w.addItem(a);
+			w.addItem(b);
+			w.addItem(c);
+			w.addItem(d);
+			w.addItem(e);
+			System.out.println("Expected: $50.00 ");
+			String actual = String.format("Actual: $%.2f" ,w.totalRefrigeratedCost());
+			System.out.println(actual);
 		}
 
 		/**
@@ -120,7 +170,24 @@ public class WareHouseTest {
 		 */
 		public static void testRemoveItem_WithIndex() {
 			System.out.println("-->testRemoveItem_WithIndex"); 
-			System.out.println("NOT IMPLEMENTED"); 
+			
+			WareHouse w = new WareHouse();
+			Item a = new Item("Granola Bar",2.0);
+			Item b = new Item("Bread",4.3);
+//			Item c = new Item("Waffles",2.0);
+//			RefrigeratedItem coldWaffle = new RefrigeratedItem(c,10.0);
+			Item c = new RefrigeratedItem("Waffles",5.4,20.00);
+			Item d = new RefrigeratedItem("Ice Cream", 2.7, 26.00);
+			Item e = new RefrigeratedItem("Pizza",5.2,20.00);
+			w.addItem(a);
+			w.addItem(b);
+			w.addItem(c);
+			w.addItem(d);
+			w.addItem(e);
+			System.out.println("Expected: name=Ice Cream, cost=$12.80, weight=2.70, temp=26.00 degrees, 4 items");
+			System.out.print("Actual:" + w.removeItem(3));
+			System.out.println(", " +w.getNumItems() + " items");
+			
 		}
 
 		/**
@@ -130,6 +197,24 @@ public class WareHouseTest {
 		public static void testRemoveItem_WithName() {
 			System.out.println("-->testRemoveItem_WithName"); 
 			System.out.println("NOT IMPLEMENTED"); 
+			WareHouse w = new WareHouse();
+			Item a = new Item("Granola Bar",2.0);
+			Item b = new Item("Bread",4.3);
+//			Item c = new Item("Waffles",2.0);
+//			RefrigeratedItem coldWaffle = new RefrigeratedItem(c,10.0);
+			Item c = new RefrigeratedItem("Waffles",5.4,20.00);
+			Item d = new RefrigeratedItem("Ice Cream", 2.7, 26.00);
+			Item e = new RefrigeratedItem("Pizza",5.2,20.00);
+			w.addItem(a);
+			w.addItem(b);
+			w.addItem(c);
+			w.addItem(d);
+			w.addItem(e);
+			System.out.println("Expected: Returned Item: name=Bread, cost=$8.60, weight=4.30, 4 items");
+			System.out.print("Actual: Returned Items: " + w.removeItemName("Bread"));
+			System.out.println(", " + w.getNumItems() + " items");
+		
+			
 		}
 
 		/**
@@ -137,7 +222,20 @@ public class WareHouseTest {
 		 * as specified in the assignment document. 
 		 */
 		public static void testToString() {
-			System.out.println("-->testToString"); 
+			System.out.println("-->testToString");
+			WareHouse w = new WareHouse();
+			Item a = new Item("Granola Bar",2.0);
+			Item b = new Item("Bread",4.3);
+			Item c = new RefrigeratedItem("Waffles",5.4,20.00);
+			Item d = new RefrigeratedItem("Ice Cream", 2.7, 26.00);
+			Item e = new RefrigeratedItem("Pizza",5.2,20.00);
+			w.addItem(a);
+			w.addItem(b);
+			w.addItem(c);
+			w.addItem(d);
+			w.addItem(e);
+			System.out.print(w);
+		
 			System.out.println("NOT IMPLEMENTED"); 
 		}
 
