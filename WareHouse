@@ -121,7 +121,7 @@ public class WareHouse {
 		String msg = "";
 		for(int i = 0; i < numItems; i++) {
 			msg += items[i].toString();
-			msg+= n/;
+			msg+= "\n";
 		}return msg;
 	}
        
