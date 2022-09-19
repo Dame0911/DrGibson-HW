@@ -1,15 +1,14 @@
 package hw3_code;
 
 public class WareHouse {
-	private Item[]items = new Item[10];
+	protected Item[]items = new Item[10];
 	private int numItems;
 	
 	public WareHouse() {	
 	}
 	
 	public void addItem(Item v) {
-		int size = items.length;
-		if(numItems < size) {
+		if(numItems < items.length) {
 			items[numItems] = v;
 			numItems += 1;
 		}
@@ -26,13 +25,14 @@ public class WareHouse {
 	}
 	public Item getItem(String a) {
 		Item v = null;
-		for(int i = 0; i < items.length; i++) {
-			if(items[i].getName().equals(a)) {
-				v = items[i];
+		for(int i = 0; i < numItems; i++) {
+			if(items[i].getName().equals(a)){
+				return items[i];
 			}
 		}
 		return v;
 	}
+	
 	public int getNumItems() {
 		return numItems;
 	}
@@ -50,8 +50,18 @@ public class WareHouse {
 		return tempSum / count;
 			
 		}
+	//Helper Method
+	private int getRefrigeratedItems() {
+		int num = 0;
+		for(int i = 0; i < items.length; i++) {
+			if(items[i] instanceof RefrigeratedItem){
+				num+=1;
+			}
+		}
+		return num;
+	}
 	public RefrigeratedItem[] getRefrigeratedArray(Item[] imps){
-		RefrigeratedItem[] refArry = new RefrigeratedItem[imps.length];
+		RefrigeratedItem[] refArry = new RefrigeratedItem[getRefrigeratedItems()];
 		int size = 0;
 		for(int i = 0; i < imps.length; i++){
 			if(imps[i] instanceof RefrigeratedItem){
@@ -63,8 +73,58 @@ public class WareHouse {
 		return refArry;	
 		
 	}
-       
 	
+	public double totalCost(){
+		double total = 0.0;
+		for(int i = 0; i < numItems; i++) {
+			 if(items[i] instanceof RefrigeratedItem){
+				 RefrigeratedItem ga = (RefrigeratedItem)items[i];
+				 total+=ga.cost();
+			 } else {
+				 total += items[i].cost();
+			 }	 	
+		}
+		return total;
+	}
+	
+	public double totalRefrigeratedCost() {
+		double total = 0.0;
+		RefrigeratedItem[] rf = getRefrigeratedArray(items);
+		for(int i = 0; i < getRefrigeratedItems(); i++){
+			total += rf[i].cost();
+		}return total;
+	}
+	public Item removeItem(int t) {
+		Item v  = null;
+		if((t <= numItems) && (t >= 0)){
+			v = items[t];
+			for(int i =t+1; i < numItems; i++) {
+				items[i-1] = items[i];
+			}numItems--;		
+		}return v;
+		
+	}
+	public Item removeItemName(String b) {
+		Item rItem = null;
+		for(int i = 0; i < numItems; i++) {
+			if(items[i].getName().equals(b)) {
+				rItem = items[i];
+				for(int j = i+1; j < numItems; j++) {
+					items[j-1] = items[j];
+				}numItems--;
+			}
+		}
+	return rItem;
+			
+	}
+	public String toString() {
+		String msg = "";
+		for(int i = 0; i < numItems; i++) {
+			msg += items[i].toString();
+			msg+= n/;
+		}return msg;
+	}
+       
 	}
 	
 	
