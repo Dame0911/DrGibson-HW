@@ -59,6 +59,130 @@ public class RefigeratedItemTest {
 
 	}
 
+package prob2;
+import java.util.ArrayList;
+
+public class MartianManager {
+	protected ArrayList<Martian>martians = new ArrayList<>();
+	protected ArrayList<Teleporter>teleporters = new ArrayList<>();
+	
+	public MartianManager() {
+	}
+	
+	public boolean addMartian(Martian m) {
+		if(!martians.contains(m)) {
+			martians.add(m);
+			if(m instanceof GreenMartian) {
+				Teleporter mt = (Teleporter)m;
+				teleporters.add(mt);
+			}
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	
+	public int power(Martian m) {
+		int power = 0;
+		if(m instanceof GreenMartian){
+			GreenMartian mg = (GreenMartian)m;
+			power = mg.getVolume();
+			return power;
+	}
+		else {
+			RedMartian mg = (RedMartian)m;
+			power = mg.getVolume() + mg.tenacity;
+			return power;	
+		}
+	}
+	public ArrayList<Martian> battle(ArrayList<Martian> invaders){
+		ArrayList<Martian>fallen = new ArrayList<>();
+		
+		for(int i = 0; i < invaders.size();i++) {
+			for(int j = 0; j < martians.size(); j++) {
+				if(power(invaders.get(i)) > power(martians.get(j))){
+					fallen.add(martians.get(j));
+					martians.remove(j);	
+					break;
+			
+				}
+				
+			}
+			
+			
+//			if(invaders.get(i) instanceof GreenMartian){
+//				GreenMartian g = (GreenMartian)invaders.get(i);
+//				power1 = g.volume;
+//				
+//				if(martians.get(i) instanceof GreenMartian) {
+//					GreenMartian j = (GreenMartian)martians.get(i);
+//					power2 = j.volume;
+//				}
+//				else if(martians.get(i) instanceof RedMartian) {
+//					RedMartian j = (RedMartian)martians.get(i);
+//					power2 = j.volume + j.tenacity;
+//				}	
+//			}
+//			else if(invaders.get(i) instanceof RedMartian){
+//				RedMartian r = (RedMartian)invaders.get(i);
+//				power1 = r.volume + r.tenacity;
+//				
+//				if(martians.get(i) instanceof GreenMartian) {
+//					GreenMartian j = (GreenMartian)martians.get(i);
+//					power2 = j.volume;
+//				}
+//				else if(martians.get(i) instanceof RedMartian) {
+//					RedMartian j = (RedMartian)martians.get(i);
+//					power2 = j.volume + j.tenacity;
+//				}	
+//			}
+//			if(power1 > power2) {
+//				fallen.add(martians.get(i));
+//				martians.remove(i);
+//				break;
+//			}
+//			
+		}
+		return fallen;
+	}
+	
+	
+	public static void main(String[]args) {
+		MartianManager man = new MartianManager();
+		GreenMartian a = new GreenMartian(1,1);
+		GreenMartian b = new GreenMartian(1,1);
+		GreenMartian c = new GreenMartian(1,1);
+		GreenMartian d = new GreenMartian(1,1);
+		
+		man.addMartian(a);
+		man.addMartian(b);
+		man.addMartian(c);
+		man.addMartian(d);
+		
+		GreenMartian e = new GreenMartian(1,2);
+		GreenMartian f = new GreenMartian(1,1);
+		GreenMartian g = new GreenMartian(1,2);
+		GreenMartian h = new GreenMartian(1,1);
+		
+		ArrayList<Martian>mars = new ArrayList<>();
+		mars.add(e);
+		mars.add(f);
+		mars.add(g);
+		mars.add(h);
+		
+		System.out.println(man.battle(mars));
+		
+		
+		
+		
+		
+	}
+	
+	
+
+}
 
 	
 	
