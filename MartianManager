@@ -1,0 +1,202 @@
+package prob2;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.lang.Math;
+
+public class MartianManager {
+	protected ArrayList<Martian>martians = new ArrayList<>();
+	protected ArrayList<Teleporter>teleporters = new ArrayList<>();
+	
+	public MartianManager() {
+	}
+	
+	public boolean addMartian(Martian m) {
+		if(!martians.contains(m)) {
+			martians.add(m);
+			if(m instanceof GreenMartian) {
+				Teleporter mt = (Teleporter)m;
+				teleporters.add(mt);
+			}return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	//Helper Method
+	public int power(Martian m) {
+		int power = 0;
+		if(m instanceof GreenMartian){
+			GreenMartian mg = (GreenMartian)m;
+			power = mg.getVolume();
+			return power;
+	    }
+		else {
+			RedMartian mg = (RedMartian)m;
+			power = mg.getVolume() + mg.tenacity;
+			return power;	
+		}
+	}
+	
+	
+	
+	public ArrayList<Martian> battle(ArrayList<Martian> invaders){
+		ArrayList<Martian>fallen = new ArrayList<>();
+		
+		for(int i = 0; i < invaders.size();i++) {
+			for(int j = 0; j < martians.size(); j++) {
+				if(power(invaders.get(i)) > power(martians.get(j))){
+					fallen.add(martians.get(j));
+					martians.remove(j);	
+					if(martians.get(j) instanceof Teleporter) {
+						Teleporter t = (Teleporter)martians.get(j);
+						teleporters.add(t);
+					}
+					break;
+			
+				}
+				
+			}
+		}
+		return fallen;
+	}
+			
+	public boolean contains(int id) {
+		GreenMartian m = new GreenMartian(id,1);
+		if(martians.contains(m)) {
+			return true;
+		}
+		return false;
+	}
+	
+	public Martian getMartianAt(int i) {
+		if(i >= 0 && i <= martians.size()) {
+			return martians.get(i);
+		}
+		return null;
+	}
+	
+	public Martian getMartianClosestTo(int id) {
+		int smallest = 100;
+		Martian m = null;
+		 
+		
+		for(int i = 0; i < martians.size(); i++) {
+			if(Math.abs(id - martians.get(i).id) < smallest) {
+				smallest = Math.abs(id - martians.get(i).id);
+				m = martians.get(i);
+			}
+		}
+		return m;
+	}
+	
+	public Martian getMartianClosestTo(Martian martian) {
+		return getMartianClosestTo(martian.id);
+	}
+	
+	public Martian getMartianWithId(int id) {
+		Martian mar = new GreenMartian(id,1);
+		int loc = 0;
+		if(martians.contains(mar)) {
+			loc = martians.indexOf(mar);
+			return martians.get(loc);
+		}
+		return null;
+	}
+	
+	public int getNumMartians() {
+		return martians.size();
+	}
+	
+	public int numTeleporters() {
+		return teleporters.size();
+	}
+	public ArrayList<Martian> getSortedMartians(){
+		ArrayList<Martian> sortMartians = martians;
+		Collections.sort(sortMartians);
+		return sortMartians;
+	}
+	
+	public Teleporter getTeleporterAt(int i) {
+		if(i >= 0 && i <= teleporters.size()) {
+			return teleporters.get(i);
+		}
+		return null;
+	}
+	
+	public String groupSpeak() {
+		String groupSpeak = "";
+		for(int i = 0; i < martians.size(); i++) {
+			groupSpeak += "\n" + martians.get(i).speak();
+		}return groupSpeak;
+	}
+	
+	public String groupTeleport(String dest) {
+		String groupTel ="";
+		for(int i = 0; i < teleporters.size(); i++) {
+			groupTel += "\n" + teleporters.get(i).teleporter(dest);
+		}return groupTel;
+	}
+	
+	public void obliterateTeleporters() {
+		for(int i = 0; i < martians.size(); i++) {
+			if(martians.get(i) instanceof Teleporter) {
+				martians.remove(i);
+				teleporters.remove(i);	
+			}
+		}
+	}
+	public Martian removeMartian(int id) {
+		Martian m = new GreenMartian(id,1);
+		int loc = 0;
+		Martian removedMartian = null;;
+		if(martians.contains(m)) {
+			loc = martians.indexOf(m);
+			removedMartian = martians.get(loc);
+			martians.remove(loc);
+			teleporters.remove(loc);
+			return removedMartian;
+		}
+		return removedMartian;
+	}
+	
+//	public String toString() {
+//		
+//	}
+
+	
+	
+	public static void main(String[]args) {
+		MartianManager man = new MartianManager();
+		GreenMartian a = new GreenMartian(1,1);
+		GreenMartian b = new GreenMartian(4,1);
+		GreenMartian c = new GreenMartian(7,1);
+		GreenMartian d = new GreenMartian(10,1);
+		
+		man.addMartian(a);
+		man.addMartian(b);
+		man.addMartian(c);
+		man.addMartian(d);
+		
+		GreenMartian e = new GreenMartian(1,2);
+		GreenMartian f = new GreenMartian(2,2);
+		GreenMartian g = new GreenMartian(3,2);
+		GreenMartian h = new GreenMartian(4,2);
+		
+		ArrayList<Martian>mars = new ArrayList<>();
+		mars.add(e);
+		mars.add(f);
+		mars.add(g);
+		mars.add(h);
+		
+		System.out.println(man.getMartianClosestTo(4));
+		
+		
+		
+		
+		
+	}
+	
+	
+
+}
