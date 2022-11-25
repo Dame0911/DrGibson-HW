@@ -1,0 +1,105 @@
+public class MyClass {
+    public static void main(String args[]) {
+    //   int x=10;
+    //   int y=25;
+    //   int z=x+y;
+      
+      String Teams[] = new String[26];
+      
+      
+      
+      
+      
+    
+      
+      
+      String a = "Netherlands";
+      String b = "Senagal";
+      String c = "Ecuador";
+      String d = "Quatar";      //Group A
+      Teams[0] = a;
+      Teams[1] = b;
+      Teams[2] = c;
+      Teams[3] = d;
+      
+      
+      String e = "England";
+      String f = "Iran";
+      String g = "United States";             //Group B
+      String h = "Wales";        
+      Teams[4] = e;
+      Teams[5] = f;
+      Teams[6] = g;
+      Teams[7] = h;
+      
+      
+      String it = "Argentina";
+      String j = "Mexico";
+      String k = "Poland";             //Group C
+      String l = "Saudi Arabia";        
+      Teams[8] = i;
+      Teams[9] = j;
+      Teams[10] = k;
+      Teams[11] = l;
+      
+      
+      String m = "France";
+      String n = "Australia";
+      String o = "Denmark";             //Group D
+      String p = "Tunisia";        
+      Teams[12] = m;
+      Teams[13] = n;
+      Teams[14] = o;
+      Teams[15] = p;
+      
+      
+      
+      String q = "Japan";
+      String r = "Germany";
+      String s = "Spain";             //Group E
+      String t  = "Costa Rica";        
+      Teams[16] = q;
+      Teams[17] = r;
+      Teams[18] = s;
+      Teams[19] = t;
+      
+      
+      String u = "Belgium";
+      String v = "Canada";
+      String w = "Morocco";             //Group F
+      String x = "Croatia";        
+      Teams[20] = u;
+      Teams[21] = v;
+      Teams[22] = w;
+      Teams[23] = x;
+      
+      
+      
+      
+      
+      
+      
+    //   String a = "Japan";
+    //   String b = "Germany";
+    //   String c = "";             //Group G
+    //   String d = "Quatar";        
+    //   Teams[4] = a;
+    //   Teams[5] = b;
+    //   Teams[6] = c;
+    //   Teams[7] = d;
+      
+    //   String a = "Japan";
+    //   String b = "Germany";
+    //   String c = "";             //Group H
+    //   String d = "Quatar";        
+    //   Teams[4] = a;
+    //   Teams[5] = b;
+    //   Teams[6] = c;
+    //   Teams[7] = d;
+     
+     for(int i = 0; i < Teams.length; i++){
+         System.out.print(Teams[i]);
+     }
+      
+    }
+}
