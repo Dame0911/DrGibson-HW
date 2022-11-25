@@ -1,4 +1,6 @@
 public class MyClass {
+    String Name;
+    Int Score;
     public static void main(String args[]) {
     //   int x=10;
     //   int y=25;
@@ -33,7 +35,7 @@ public class MyClass {
       Teams[7] = h;
       
       
-      String it = "Argentina";
+      String i = "Argentina";
       String j = "Mexico";
       String k = "Poland";             //Group C
       String l = "Saudi Arabia";        
@@ -97,8 +99,8 @@ public class MyClass {
     //   Teams[6] = c;
     //   Teams[7] = d;
      
-     for(int i = 0; i < Teams.length; i++){
-         System.out.print(Teams[i]);
+     for(int z = 0; z < Teams.length; z++){
+         System.out.println(Teams[z]);
      }
       
     }
