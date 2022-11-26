@@ -1,136 +1,78 @@
-package hw3_code;
+import java.util.ArrayList;
 
-public class WareHouse {
-	protected Item[]items = new Item[10];
-	private int numItems;
-	
-	public WareHouse() {	
-	}
-	
-	public void addItem(Item v) {
-		if(numItems < items.length) {
-			items[numItems] = v;
-			numItems += 1;
-		}
-	}
-	public Item getItem(int p) {
-		if(p < numItems) {
-			Item gotItem = items[p];
-			return gotItem;	
-		}
-		else {
-			return null;
-		}
-		
-	}
-	public Item getItem(String a) {
-		Item v = null;
-		for(int i = 0; i < numItems; i++) {
-			if(items[i].getName().equals(a)){
-				return items[i];
-			}
-		}
-		return v;
-	}
-	
-	public int getNumItems() {
-		return numItems;
-	}
-	public double getAverageTemp() {
-		double tempSum = 0;
-		int count = 0;
-		for(int i = 0; i < items.length; i++){
-			if(items[i] instanceof RefrigeratedItem) {
-				RefrigeratedItem x = (RefrigeratedItem)items[i];
-				tempSum += x.getTemp();		
-				count += 1;
-			}
-	
-		}
-		return tempSum / count;
-			
-		}
-	//Helper Method
-	private int getRefrigeratedItems() {
-		int num = 0;
-		for(int i = 0; i < items.length; i++) {
-			if(items[i] instanceof RefrigeratedItem){
-				num+=1;
-			}
-		}
-		return num;
-	}
-	public RefrigeratedItem[] getRefrigeratedArray(Item[] imps){
-		RefrigeratedItem[] refArry = new RefrigeratedItem[getRefrigeratedItems()];
-		int size = 0;
-		for(int i = 0; i < imps.length; i++){
-			if(imps[i] instanceof RefrigeratedItem){
-				RefrigeratedItem x = (RefrigeratedItem)imps[i];
-				refArry[size] = x;
-				size += 1;
-			}	
-		}
-		return refArry;	
-		
-	}
-	
-	public double totalCost(){
-		double total = 0.0;
-		for(int i = 0; i < numItems; i++) {
-			 if(items[i] instanceof RefrigeratedItem){
-				 RefrigeratedItem ga = (RefrigeratedItem)items[i];
-				 total+=ga.cost();
-			 } else {
-				 total += items[i].cost();
-			 }	 	
-		}
-		return total;
-	}
-	
-	public double totalRefrigeratedCost() {
-		double total = 0.0;
-		RefrigeratedItem[] rf = getRefrigeratedArray(items);
-		for(int i = 0; i < getRefrigeratedItems(); i++){
-			total += rf[i].cost();
-		}return total;
-	}
-	public Item removeItem(int t) {
-		Item v  = null;
-		if((t <= numItems) && (t >= 0)){
-			v = items[t];
-			for(int i =t+1; i < numItems; i++) {
-				items[i-1] = items[i];
-			}numItems--;		
-		}return v;
-		
-	}
-	public Item removeItemName(String b) {
-		Item rItem = null;
-		for(int i = 0; i < numItems; i++) {
-			if(items[i].getName().equals(b)) {
-				rItem = items[i];
-				for(int j = i+1; j < numItems; j++) {
-					items[j-1] = items[j];
-				}numItems--;
-			}
-		}
-	return rItem;
-			
-	}
-	public String toString() {
-		String msg = "";
-		for(int i = 0; i < numItems; i++) {
-			msg += items[i].toString();
-			msg+= "\n";
-		}return msg;
-	}
-       
-	}
-	
-	
-	
+public class Team {
+    private String name;
+    private int score;
+    
+    public Team(String name, int score){
+        this.name = name;
+        this.score = score;
+    }
+    
+    public int getScore(){
+        return score;
+    }
+    
+    //Override
+    public String toString(){
+        String msg = "";
+        return msg + name + "   " + score;
+    }
 
-
-	
-	
-
+    
+    
+    public static void main(String args[]) {
+        
+        int biggest = 3;
+        
+        Team a = new Team("Netherlands",4);
+        Team b = new Team("Ecuador",4);              //Group A
+        Team c = new Team("Senegal",3);
+        Team d = new Team("Qatar",0);
+        
+    
+        Team e = new Team("England",4);
+        Team f = new Team("Iran",3);                 //Group B
+        Team g = new Team("USA",2);
+        Team h = new Team("Wales",1);
+        
+        
+        Team i = new Team("France",4);
+        Team j = new Team("Australlia",3);          //Group D
+        Team k = new Team("Denmark",2);
+        Team l = new Team("Tunisia",1);
+        
+        ArrayList<Team> teams = new ArrayList<Team>();
+        teams.add(a);
+        teams.add(b);
+        teams.add(c);
+        teams.add(d);
+        teams.add(e);
+        teams.add(f);
+        teams.add(g);
+        teams.add(h);
+        teams.add(i);
+        teams.add(j);
+        teams.add(k);
+        teams.add(l);
+        
+        
+        
+        for(int v = 0; v < teams.size(); v++){
+                System.out.println(teams.get(v));
+    
+        }
+        
+        
+    
+        // Team t = new Team("Netherlands",4);
+        // Team t = new Team("Netherlands",4);
+        // Team t = new Team("Netherlands",4);
+        // Team t = new Team("Netherlands",4);
+        // Team t = new Team("Netherlands",4);
+        // Team t = new Team("Netherlands",4);
+        // Team t = new Team("Netherlands",4);
+        // Team t = new Team("Netherlands",4)
+      
+    }
+}
